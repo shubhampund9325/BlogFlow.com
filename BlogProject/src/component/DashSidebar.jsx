@@ -1,4 +1,120 @@
 
+// import { Sidebar } from 'flowbite-react';
+// import {
+//   HiUser,
+//   HiArrowSmRight,
+//   HiDocumentText,
+//   HiOutlineUserGroup,
+//   HiAnnotation,
+//   HiChartPie,
+// } from 'react-icons/hi';
+// import { useEffect, useState } from 'react';
+// import { Link, useLocation } from 'react-router-dom';
+// import { signoutSuccess } from '../redux/user/userSlice';
+// import { useDispatch } from 'react-redux';
+// import { useSelector } from 'react-redux';
+// import DashPosts from './DashPosts';
+
+// export default function DashSidebar() {
+//   const location = useLocation();
+//   const dispatch = useDispatch();
+//   const { currentUser } = useSelector((state) => state.user);
+//   const [tab, setTab] = useState('');
+//   useEffect(() => {
+//     const urlParams = new URLSearchParams(location.search);
+//     const tabFromUrl = urlParams.get('tab');
+//     if (tabFromUrl) {
+//       setTab(tabFromUrl);
+//     }
+//   }, [location.search]);
+//   const handleSignout = async () => {
+//     try {
+//       const res = await fetch('/api/user/signout', {
+//         method: 'POST',
+//       });
+//       const data = await res.json();
+//       if (!res.ok) {
+//         console.log(data.message);
+//       } else {
+//         dispatch(signoutSuccess());
+//       }
+//     } catch (error) {
+//       console.log(error.message);
+//     }
+//   };
+  
+//   return (
+//     <Sidebar className='w-full md:w-56'>
+//       <Sidebar.Items>
+//         <Sidebar.ItemGroup className='flex flex-col gap-1'>
+//           {currentUser && currentUser.isAdmin && (
+//             <Link to='/dashboard?tab=dash'>
+//               <Sidebar.Item
+//                 active={tab === 'dash' || !tab}
+//                 icon={HiChartPie}
+//                 as='div'
+//               >
+//                 Dashboard
+//               </Sidebar.Item>
+//             </Link>
+//           )}
+//           <Link to='/dashboard?tab=profile'>
+//             <Sidebar.Item
+//               active={tab === 'profile'}
+//               icon={HiUser}
+//               label={currentUser.isAdmin ? 'Admin' : 'User'}
+//               labelColor='dark'
+//               as='div'
+//             >
+//               Profile
+//             </Sidebar.Item>
+//           </Link>
+//           {currentUser.isAdmin && (
+//             <Link to='/dashboard?tab=posts'>
+//               <Sidebar.Item
+//                 active={tab === 'posts'}
+//                 icon={HiDocumentText}
+//                 as='div'
+//               >
+//                 Posts
+//               </Sidebar.Item>
+//             </Link>
+//           )}
+//           {currentUser.isAdmin && (
+//             <>
+//               <Link to='/dashboard?tab=users'>
+//                 <Sidebar.Item
+//                   active={tab === 'users'}
+//                   icon={HiOutlineUserGroup}
+//                   as='div'
+//                 >
+//                   Users
+//                 </Sidebar.Item>
+//               </Link>
+//               <Link to='/dashboard?tab=comments'>
+//                 <Sidebar.Item
+//                   active={tab === 'comments'}
+//                   icon={HiAnnotation}
+//                   as='div'
+//                 >
+//                   Comments
+//                 </Sidebar.Item>
+//               </Link>
+//             </>
+//           )}
+//           <Sidebar.Item
+//             icon={HiArrowSmRight}
+//             className='cursor-pointer'
+//             onClick={handleSignout}
+            
+//           >
+//             Sign Out
+//           </Sidebar.Item>
+//         </Sidebar.ItemGroup>
+//       </Sidebar.Items>
+//     </Sidebar>
+//   );
+// }
 import { Sidebar } from 'flowbite-react';
 import {
   HiUser,
@@ -11,15 +127,15 @@ import {
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { signoutSuccess } from '../redux/user/userSlice';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import DashPosts from './DashPosts';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function DashSidebar() {
   const location = useLocation();
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
   const [tab, setTab] = useState('');
+  const [showText, setShowText] = useState(true);
+
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const tabFromUrl = urlParams.get('tab');
@@ -27,6 +143,20 @@ export default function DashSidebar() {
       setTab(tabFromUrl);
     }
   }, [location.search]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY; // Get the current scroll position
+      setShowText(scrollPosition < 50); // Show text when scroll position is less than 50
+    };
+
+    window.addEventListener('scroll', handleScroll); // Add scroll event listener
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll); // Clean up the event listener
+    };
+  }, []);
+
   const handleSignout = async () => {
     try {
       const res = await fetch('/api/user/signout', {
@@ -42,7 +172,7 @@ export default function DashSidebar() {
       console.log(error.message);
     }
   };
-  
+
   return (
     <Sidebar className='w-full md:w-56'>
       <Sidebar.Items>
@@ -54,7 +184,7 @@ export default function DashSidebar() {
                 icon={HiChartPie}
                 as='div'
               >
-                Dashboard
+                {showText && 'Dashboard'}
               </Sidebar.Item>
             </Link>
           )}
@@ -66,7 +196,7 @@ export default function DashSidebar() {
               labelColor='dark'
               as='div'
             >
-              Profile
+              {showText && 'Profile'}
             </Sidebar.Item>
           </Link>
           {currentUser.isAdmin && (
@@ -76,7 +206,7 @@ export default function DashSidebar() {
                 icon={HiDocumentText}
                 as='div'
               >
-                Posts
+                {showText && 'Posts'}
               </Sidebar.Item>
             </Link>
           )}
@@ -88,7 +218,7 @@ export default function DashSidebar() {
                   icon={HiOutlineUserGroup}
                   as='div'
                 >
-                  Users
+                  {showText && 'Users'}
                 </Sidebar.Item>
               </Link>
               <Link to='/dashboard?tab=comments'>
@@ -97,7 +227,7 @@ export default function DashSidebar() {
                   icon={HiAnnotation}
                   as='div'
                 >
-                  Comments
+                  {showText && 'Comments'}
                 </Sidebar.Item>
               </Link>
             </>
@@ -106,9 +236,8 @@ export default function DashSidebar() {
             icon={HiArrowSmRight}
             className='cursor-pointer'
             onClick={handleSignout}
-            
           >
-            Sign Out
+            {showText && 'Sign Out'}
           </Sidebar.Item>
         </Sidebar.ItemGroup>
       </Sidebar.Items>
