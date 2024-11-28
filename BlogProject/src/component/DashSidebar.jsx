@@ -178,7 +178,7 @@ export default function DashSidebar() {
       <Sidebar.Items>
         <Sidebar.ItemGroup className='flex flex-col gap-1'>
           {currentUser && currentUser.isAdmin && (
-            <Link to='/dashboard?tab=dash'>
+            <Link to='/dashboard'>
               <Sidebar.Item
                 active={tab === 'dash' || !tab}
                 icon={HiChartPie}
@@ -200,7 +200,7 @@ export default function DashSidebar() {
             </Sidebar.Item>
           </Link>
           {currentUser.isAdmin && (
-            <Link to='/dashboard?tab=posts'>
+            <Link to='/dashboard'>
               <Sidebar.Item
                 active={tab === 'posts'}
                 icon={HiDocumentText}
@@ -212,7 +212,7 @@ export default function DashSidebar() {
           )}
           {currentUser.isAdmin && (
             <>
-              <Link to='/dashboard?tab=users'>
+              <Link to='/dashboard'>
                 <Sidebar.Item
                   active={tab === 'users'}
                   icon={HiOutlineUserGroup}
@@ -221,7 +221,7 @@ export default function DashSidebar() {
                   {showText && 'Users'}
                 </Sidebar.Item>
               </Link>
-              <Link to='/dashboard?tab=comments'>
+              <Link to='/dashboard'>
                 <Sidebar.Item
                   active={tab === 'comments'}
                   icon={HiAnnotation}

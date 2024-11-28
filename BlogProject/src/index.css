@@ -8,3 +8,175 @@ body{
     font-size:1.05rem;
 
 }
+.project-container {
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.project-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.project-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    text-align: left;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.project-card h2 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.project-card p {
+    margin: 0;
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+/* Container Styling */
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    animation: gradientAnimation 5s infinite alternate;
+    color: white;
+}
+
+/* Card Styling */
+.about-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(0);
+    animation: cardFloat 3s infinite ease-in-out;
+}
+
+/* Title Styling */
+.about-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Paragraph Styling */
+.about-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+/* Gradient Animation */
+@keyframes gradientAnimation {
+    0% {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+    }
+    100% {
+        background: linear-gradient(135deg, #fc466b, #3f5efb);
+    }
+}
+
+/* Card Float Animation */
+@keyframes cardFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+/* Container Styling */
+.project-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    animation: diagonalAnimation 5s infinite alternate;
+    padding: 20px;
+    color: white;
+    overflow: hidden;
+}
+
+/* Title Styling */
+.project-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* Card Container */
+.project-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Individual Project Card */
+.project-card {
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect */
+.project-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Card Title */
+.project-card h2 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+/* Card Description */
+.project-card p {
+    font-size: 1rem;
+    color: #ddd;
+    line-height: 1.5;
+}
+
+/* Diagonal Background Animation */
+@keyframes diagonalAnimation {
+    0% {
+        background: linear-gradient(135deg, #00c6ff, #0072ff);
+    }
+    100% {
+        background: linear-gradient(135deg, #ff7eb3, #ff758c);
+    }
+}

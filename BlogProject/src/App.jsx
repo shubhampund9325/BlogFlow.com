@@ -13,6 +13,7 @@ import CreatePost from './Pages/CreatePost';
 import OnlyAdminPrivateRoute from './component/OnlyAdminPrivateRoute';
 import PostPage from './Pages/PostPage';
 import CallToAction from './component/CallToAction';
+import './index.css'; 
 
 
 function App() {
