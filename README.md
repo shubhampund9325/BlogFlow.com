@@ -6,6 +6,7 @@ Your Gateway to Seamless Blogging
 <img width="1416" alt="Screenshot 2024-12-24 at 7 45 13 PM" src="https://github.com/user-attachments/assets/f7559727-3b79-4cf3-a987-3470f6508d1d" />
 
  <img width="1440" alt="Screenshot 2024-12-24 at 7 47 26 PM" src="https://github.com/user-attachments/assets/0a53c6dc-5518-451a-8ff0-5a5e8d7d08d0" />
+<img width="1423" alt="Screenshot 2024-12-24 at 7 59 13 PM" src="https://github.com/user-attachments/assets/5e0e39eb-77d2-4eb6-b240-6e7ca3dce35f" />
 
 
 📖 Overview
